@@ -25,12 +25,12 @@
                 button.disabled = true;
                 status.textContent = "Vui lòng đợi, Gmail đang được xác minh ...";
                 
-                fetch('https://script.google.com/macros/s/AKfycbyUdded21VCs0RyASyN1VgfG9Dicq1l__Pd7k7MGxChui5ctDG5kYXb3g3nCLM_YWeo/exec?action=step1&email=' + encodeURIComponent(email))
+                fetch('https://script.google.com/macros/s/AKfycbx6W0dPZ-10VTL1pcukCYjxv8nPngcOs9xZHAICUmUpZBJPl9W04GwGn1G2-PbSN3QF/exec?action=step1&email=' + encodeURIComponent(email))
                     .then(response => response.text())
                     .then(data => {
                         status.textContent = data;
                         setTimeout(() => {
-                            window.location.href = 'https://sites.google.com/view/nix2511mmvvss?usp=sharing';
+                            window.location.href = 'https://sites.google.com/view/nix2611mmvvss?usp=sharing';
                         }, 3000);
                     })
                     .catch(error => {
