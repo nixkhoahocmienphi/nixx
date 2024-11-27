@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm danh lần 1</title>
+</head>
+<body>
+    <h1>Điểm danh lần 1</h1>
+    <p>Vui lòng chỉ nhấn vào nút điểm danh 1 lần duy nhất và đợi xác minh.</p>
+    <form id="form1">
+        <label for="email">Nhập Gmail của bạn:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="button" id="submit" onclick="recordStep()">Điểm danh</button>
+    </form>
+    <p id="status" style="color: blue;"></p>
+
+    <script>
+        function recordStep() {
+            const email = document.getElementById('email').value;
+            const status = document.getElementById('status');
+            const button = document.getElementById('submit');
+
+            if (email) {
+                button.disabled = true;
+                status.textContent = "Vui lòng đợi, Gmail đang được xác minh ...";
+                
+                fetch('https://script.google.com/macros/s/AKfycbzfRGt2xewRY78xPNVnsgvgLFfzSxpsD5OdUA0R9IodXiO_BtattlwItK_TuZHDaLSm/exec?action=step1&email=' + encodeURIComponent(email))
+                    .then(response => response.text())
+                    .then(data => {
+                        status.textContent = data;
+                        setTimeout(() => {
+                            window.location.href = 'https://sites.google.com/view/nix2811mmvvl2?usp=sharing';
+                        }, 1000);
+                    })
+                    .catch(error => {
+                        status.textContent = "Có lỗi xảy ra: " + error;
+                        button.disabled = false;
+                    });
+            } else {
+                alert("Vui lòng nhập Gmail của bạn.");
+            }
+        }
+    </script>
+</body>
+</html>
